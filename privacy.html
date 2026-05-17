@@ -2,95 +2,182 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="루틴톡(RoutineTalk) 앱의 개인정보 처리방침입니다. 서비스 제공을 위해 수집하는 최소한의 기기 권한 및 개인정보 처리와 보관 방침에 대해 안내해 드립니다.">
-    <title>개인정보 처리방침 | 루틴톡 (RoutineTook)</title>
+    <title>개인정보 처리방침 | 루틴톡 (RoutineTalk)</title>
     <style>
         :root {
-            --bg-color: #0f0f0f;
-            --text-color: #e0e0e0;
-            --accent-color: #00D166; /* AppTheme.primary 반영 */
-            --secondary-text: #999;
+            --bg-color: #0d0d0d;
+            --card-bg: #161616;
+            --text-primary: #f5f5f5;
+            --text-secondary: #8e8e93; /* 미니멀 느와르 dSecondary 반영 */
+            --accent-color: #ffffff; /* 미니멀 느와르 dAccent 반영 */
+            --border-color: #222222;
         }
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            line-height: 1.6;
+
+        html {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
         }
-        h1 { font-size: 2rem; color: var(--accent-color); border-bottom: 1px solid #333; padding-bottom: 10px; }
-        h2 { font-size: 1.4rem; margin-top: 40px; color: #fff; }
-        p, li { color: var(--text-color); font-size: 0.95rem; }
-        .date { color: var(--secondary-text); font-size: 0.85rem; margin-bottom: 30px; }
-        .section { margin-bottom: 30px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #333; color: var(--secondary-text); font-size: 0.8rem; text-align: center; }
-        a { text-decoration: none; transition: 0.2s; }
-        a:hover { opacity: 0.8; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+            line-height: 1.65;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 40px 20px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .date {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+        p, li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        .section {
+            margin-bottom: 24px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* 모바일 최적화 미디어 쿼리 (태블릿 영역인 768px까지 확장) */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            .container {
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 24px 16px 40px 16px;
+                min-height: 100vh;
+                background-color: var(--bg-color);
+            }
+            h1 {
+                font-size: 20px;
+                padding-bottom: 16px;
+            }
+            h2 {
+                font-size: 15px;
+                margin-top: 24px;
+            }
+            p, li {
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>개인정보 처리방침</h1>
+        <div class="date">최종 수정일: 2026년 5월 17일</div>
 
-    <h1>개인정보 처리방침</h1>
-    <p class="date">최종 수정일: 2026년 5월 17일</p>
+        <div class="section">
+            <p>'루틴톡(RoutineTalk)'(이하 '앱')은 사용자의 개인정보를 소중히 여기며, 개인정보 보호법 등 관련 법령을 준수합니다. 본 방침을 통해 사용자가 제공하는 개인정보가 어떤 용도와 방식으로 이용되고 있는지 알려드립니다.</p>
+        </div>
 
-    <div class="section">
-        <p>'루틴톡(RoutineTook)'(이하 '앱')은 사용자의 개인정보를 소중히 여기며, 개인정보 보호법 등 관련 법령을 준수합니다. 본 방침을 통해 사용자가 제공하는 개인정보가 어떤 용도와 방식으로 이용되고 있는지 알려드립니다.</p>
+        <div class="section">
+            <h2>1. 수집하는 개인정보 항목 및 수집 방법</h2>
+            <p>앱은 서비스 제공을 위해 최소한의 정보만을 수집하며, 사용자의 명시적인 동의 하에 다음 정보를 수집합니다.</p>
+            <ul>
+                <li><strong>기기 권한:</strong> 알림 서비스 제공을 위한 알림 권한, 루틴 기록을 위한 미디어(사진/동영상) 접근 권한, 정확한 알람을 위한 알람 설정 권한.</li>
+                <li><strong>자동 생성 정보:</strong> 서비스 이용 과정에서 기기 식별자(ADID/IDFA), 앱 설치 및 사용 통계, 오류 로그 등이 자동으로 생성되어 수집될 수 있습니다.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. 개인정보의 수집 및 이용 목적</h2>
+            <ul>
+                <li><strong>서비스 제공:</strong> 사용자 설정에 따른 루틴 알림 송출 및 기록 관리.</li>
+                <li><strong>서비스 개선:</strong> 앱 성능 최적화, 오류 분석 및 사용자 경험 개선.</li>
+                <li><strong>마케팅 및 광고:</strong> 구글 애드몹(AdMob)을 통한 맞춤형 광고 제공.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. 제3자 서비스 이용</h2>
+            <p>본 앱은 원활한 서비스 제공을 위해 아래와 같은 외부 서비스를 이용하며, 해당 서비스 제공업체에서 개인정보를 수집할 수 있습니다. 각 서비스의 개인정보 처리방침은 아래 링크를 참조하십시오.</p>
+            <ul>
+                <li><a href="https://policies.google.com/privacy">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543">AdMob (광고)</a></li>
+                <li><a href="https://firebase.google.com/support/privacy">Firebase (분석 및 오류 보고)</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. 개인정보의 보유 및 파기</h2>
+            <p>앱은 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 사용자의 기기 내부에 저장된 데이터(Hive 등)는 앱을 삭제할 때 함께 삭제됩니다.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. 사용자의 권리</h2>
+            <p>사용자는 언제든지 기기 설정 및 앱 내 설정을 통해 권한 승인을 철회하거나 개인정보 수집을 거부할 수 있습니다. 다만, 이 경우 일부 서비스 이용이 제한될 수 있습니다.</p>
+        </div>
+
+        <div class="section">
+            <h2>6. 문의처</h2>
+            <p>개인정보 보호와 관련하여 궁금한 사항이 있으시면 아래로 연락해주시기 바랍니다.</p>
+            <ul>
+                <li>이메일: <strong>nooklabs.dev@gmail.com</strong></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 NookLabs. All rights reserved.
+        </div>
     </div>
-
-    <div class="section">
-        <h2>1. 수집하는 개인정보 항목 및 수집 방법</h2>
-        <p>앱은 서비스 제공을 위해 최소한의 정보만을 수집하며, 사용자의 명시적인 동의 하에 다음 정보를 수집합니다.</p>
-        <ul>
-            <li><strong>기기 권한:</strong> 알림 서비스 제공을 위한 알림 권한, 루틴 기록을 위한 미디어(사진/동영상) 접근 권한, 정확한 알람을 위한 알람 설정 권한.</li>
-            <li><strong>자동 생성 정보:</strong> 서비스 이용 과정에서 기기 식별자(ADID/IDFA), 앱 설치 및 사용 통계, 오류 로그 등이 자동으로 생성되어 수집될 수 있습니다.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>2. 개인정보의 수집 및 이용 목적</h2>
-        <ul>
-            <li><strong>서비스 제공:</strong> 사용자 설정에 따른 루틴 알림 송출 및 기록 관리.</li>
-            <li><strong>서비스 개선:</strong> 앱 성능 최적화, 오류 분석 및 사용자 경험 개선.</li>
-            <li><strong>마케팅 및 광고:</strong> 구글 애드몹(AdMob)을 통한 맞춤형 광고 제공.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>3. 제3자 서비스 이용</h2>
-        <p>본 앱은 원활한 서비스 제공을 위해 아래와 같은 외부 서비스를 이용하며, 해당 서비스 제공업체에서 개인정보를 수집할 수 있습니다. 각 서비스의 개인정보 처리방침은 아래 링크를 참조하십시오.</p>
-        <ul>
-            <li><a href="https://policies.google.com/privacy" style="color: var(--accent-color);">Google Play Services</a></li>
-            <li><a href="https://support.google.com/admob/answer/6128543" style="color: var(--accent-color);">AdMob (광고)</a></li>
-            <li><a href="https://firebase.google.com/support/privacy" style="color: var(--accent-color);">Firebase (분석 및 오류 보고)</a></li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>4. 개인정보의 보유 및 파기</h2>
-        <p>앱은 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 사용자의 기기 내부에 저장된 데이터(Hive 등)는 앱을 삭제할 때 함께 삭제됩니다.</p>
-    </div>
-
-    <div class="section">
-        <h2>5. 사용자의 권리</h2>
-        <p>사용자는 언제든지 기기 설정 및 앱 내 설정을 통해 권한 승인을 철회하거나 개인정보 수집을 거부할 수 있습니다. 다만, 이 경우 일부 서비스 이용이 제한될 수 있습니다.</p>
-    </div>
-
-    <div class="section">
-        <h2>6. 문의처</h2>
-        <p>개인정보 보호와 관련하여 궁금한 사항이 있으시면 아래로 연락해주시기 바랍니다.</p>
-        <ul>
-            <li>이메일: <strong>nooklabs.dev@gmail.com</strong></li>
-        </ul>
-    </div>
-
-    <div class="footer">
-        &copy; 2026 NookLabs (RoutineTook). All rights reserved.
-    </div>
-
 </body>
 </html>

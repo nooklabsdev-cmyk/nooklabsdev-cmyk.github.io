@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RoutineTalk - 공지사항</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #161616;
+            --text-primary: #f5f5f5;
+            --text-secondary: #8e8e93; /* 미니멀 느와르 dSecondary 반영 */
+            --accent-color: #ffffff; /* 미니멀 느와르 dAccent 반영 */
+            --border-color: #222222;
+            --hover-bg: #1e1e1e;
+        }
+
+        html {
+            background-color: var(--bg-color);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.65;
+            margin: 0;
+            padding: 40px 20px;
+            -webkit-tap-highlight-color: transparent; /* 터치 하이라이트 잔상 제거 */
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+            color: var(--accent-color);
+        }
+
+        /* 아코디언 스타일 */
+        .notice-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notice-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .notice-header {
+            padding: 20px 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+            user-select: none;
+        }
+
+        .notice-header:active {
+            background-color: var(--hover-bg);
+            border-radius: 8px;
+        }
+
+        .notice-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            padding-right: 12px;
+        }
+
+        .notice-tag-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .notice-date {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .notice-title {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.45;
+        }
+
+        .notice-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .notice-icon {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--text-secondary);
+            border-bottom: 2px solid var(--text-secondary);
+            transform: rotate(45deg);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s;
+            margin-top: -4px;
+        }
+
+        .notice-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #111111;
+            border-radius: 8px;
+        }
+
+        .notice-content-inner {
+            padding: 20px 16px;
+            font-size: 13.5px;
+            color: #c5c5c7;
+            line-height: 1.65;
+            white-space: pre-wrap; /* 줄바꿈 유지 */
+        }
+
+        .notice-content-inner b {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* 활성화 상태 */
+        .notice-item.active .notice-icon {
+            transform: rotate(-135deg);
+            border-color: var(--accent-color);
+            margin-top: 2px;
+        }
+
+        .notice-item.active .notice-content {
+            margin-top: 4px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 모바일 최적화 미디어 쿼리 (태블릿 영역인 768px까지 확장) */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            .container {
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 20px 16px 40px 16px;
+                min-height: 100vh;
+                background-color: var(--bg-color);
+            }
+            h1 {
+                font-size: 20px;
+                margin-bottom: 16px;
+                padding-bottom: 12px;
+            }
+            .notice-header {
+                padding: 16px 4px;
+            }
+            .notice-title {
+                font-size: 14px;
+            }
+            .notice-content-inner {
+                padding: 16px 12px;
+                font-size: 13px;
+            }
+            .notice-item.active .notice-content {
+                margin-bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>공지사항</h1>
+
+        <div class="notice-list">
+            <!-- 공지사항 1 -->
+            <div class="notice-item">
+                <div class="notice-header" onclick="toggleNotice(this)">
+                    <div class="notice-title-group">
+                        <div class="notice-tag-date">
+                            <span class="notice-tag">[안내]</span>
+                            <span class="notice-date">2026.05.17</span>
+                        </div>
+                        <span class="notice-title">RoutineTalk 앱 정식 출시 완료 안내</span>
+                    </div>
+                    <div class="notice-icon-wrapper">
+                        <span class="notice-icon"></span>
+                    </div>
+                </div>
+                <div class="notice-content">
+                    <div class="notice-content-inner">안녕하세요, NookLabs입니다.
+
+많은 분들의 건강한 삶과 루틴 정착을 돕는 모바일 앱 <b>RoutineTalk</b>이 정식으로 출시되었습니다! 🎉
+
+심플하면서도 깊이 있는 기능들로 채워져 있으니 마음껏 즐겨주시기 바랍니다.
+앞으로도 꾸준히 더 유용하고 세련된 기능을 업데이트해 나갈 것을 약속드립니다.
+
+사용 중 문의사항이나 제안 사항이 있으시면 언제든지 <b>내 정보 > 문의하기</b> 메일을 통해 남겨주세요.
+
+감사합니다.</div>
+                </div>
+            </div>
+
+            <!-- 공지사항 2 -->
+            <div class="notice-item">
+                <div class="notice-header" onclick="toggleNotice(this)">
+                    <div class="notice-title-group">
+                        <div class="notice-tag-date">
+                            <span class="notice-tag">[기능]</span>
+                            <span class="notice-date">2026.05.17</span>
+                        </div>
+                        <span class="notice-title">구글 드라이브 클라우드 백업/복원 기능 안내</span>
+                    </div>
+                    <div class="notice-icon-wrapper">
+                        <span class="notice-icon"></span>
+                    </div>
+                </div>
+                <div class="notice-content">
+                    <div class="notice-content-inner">소중한 내 루틴 기록을 잃어버리지 않는 가장 안전한 방법!
+<b>구글 드라이브 백업 기능</b>의 이용 방법을 안내해 드립니다.
+
+<b>1. 수동 백업</b>
+- [내 정보 > 백업 및 복원] 메뉴에서 언제든 내 구글 계정으로 수동 백업을 진행할 수 있습니다.
+- 백업 데이터는 안전하게 본인의 Google Drive 폴더(RoutineTalk_Backups)에 저장됩니다.
+
+<b>2. 자동 백업 (플러스 멤버십)</b>
+- 루틴톡 플러스 구독 회원님들은 앱을 종료할 때 하루 1회 백업이 조용히 자동으로 이루어집니다.
+- 기기 고장이나 급격한 앱 삭제 시에도 최근 15일치 자동 백업 데이터가 유지되므로 언제든 원상복구가 가능합니다.
+
+<b>3. 복원하기</b>
+- 새로운 기기를 장만하셨거나 앱을 재설치하셨을 때, 동일한 구글 계정으로 로그인한 뒤 복원 시점(타임스탬프)을 선택해 터치 한 번으로 복원할 수 있습니다.
+
+안전한 데이터 보관을 위해 주기적인 백업을 적극 권장드립니다.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNotice(header) {
+            const item = header.parentElement;
+            const content = item.querySelector('.notice-content');
+            const isActive = item.classList.contains('active');
+            
+            // 다른 모든 활성화된 공지사항 닫기
+            document.querySelectorAll('.notice-item').forEach(el => {
+                if (el !== item) {
+                    el.classList.remove('active');
+                    el.querySelector('.notice-content').style.maxHeight = null;
+                }
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            }
+        }
+    </script>
+</body>
+</html>
